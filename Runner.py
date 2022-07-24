@@ -22,7 +22,7 @@ class MLData:
         self.imageClassificationConfigPath=classification
         self.frozenModelPath=frozen
 
-    def mlData(self):
+    def getMlData(self):
         list = []
         list.append(self.path)
         cc = FileConverter(self.Path, self.tessaractFileLocation)
@@ -47,12 +47,21 @@ class MLData:
         elif self.path.endswith(vidSuffixes):
             vidc=VC(self.path,self.objectClassificationConfigPath,self.frozenModelPath )
             list.append((vidc.classify()))
-
+        return list
 
 
 
 
 if __name__ == '__main__':
     backupPath = input("Enter the path of the directory that has to backed up")
+    tessaractFilePath = input("Enter the location of the tesseract executable")
+    piiDataTagsFilePath=input("Enter the location of the PII data tags file")
+    objectClassificationConfigFilePath=input("Enter the path of image classification config file")
+    frozenModelFilePath=input("Enter the path of the frozen model")
     fm = FileManagement(backupPath)
-    tessaractFileLocation = input("Enter the location of the tesseract executable")
+    filePaths=fm.getPathList()
+    metadata=[]        #list of list that contain
+    for i in range(len(filePaths)):
+        metaobj=MLData(filePaths[i],tessaractFilePath,piiDataTagsFilePath,objectClassificationConfigFilePath,frozenModelFilePath)
+        metadata.append(metaobj.getMlData())
+
