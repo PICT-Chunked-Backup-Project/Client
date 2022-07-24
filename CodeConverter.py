@@ -6,6 +6,8 @@ import os
 import pandas as pd
 import PyPDF2
 
+
+
 class FileConverter:
     path = ""
     tesseractFilePath=""
@@ -22,13 +24,21 @@ class FileConverter:
             for para in doc.paragraphs:
                 fullText.append(para.text)
                 text = '\n'.join(fullText)
-                print(text)
+                # print(text)
+        elif self.path.endswith(".txt"):
+            with open(self.path,encoding='utf-8') as f:
+                text=f.readlines()
+            # print(text)
         elif self.path.endswith(".pdf"):
             pdfFileObj = open(self.path, 'rb')
             pdfReader = PyPDF2.PdfFileReader(pdfFileObj, strict=False)
-            pageObj = pdfReader.getPage(0)
-            text = pageObj.extract_text()
-            #print(text)
+            text=""
+            y = pdfReader.numPages
+            for x in range(0,y):
+               pageObj = pdfReader.getPage(x)
+               text=text+pageObj.extract_text()
+               x=x+1
+            # print(text)
         elif self.path.endswith(".csv"):
             df1 = pd.read_csv(self.path)
             text = df1.to_string()

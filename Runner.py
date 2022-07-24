@@ -26,9 +26,7 @@ class MLData:
         list = []
         list.append(self.path)
         cc = FileConverter(self.Path, self.tessaractFileLocation)
-        txtableSuffixes = (
-        ".pdf", ".docx", "xlsx", ".csv", ".pdf", ".jpg", ".png", ".gif", ".jpeg", ".raw", ".cr2", ".nef", ".orf",
-        ".sr2")
+        txtableSuffixes = (".pdf", ".docx", "xlsx", ".csv", ".pdf", ".jpg", ".png", ".gif", ".jpeg", ".raw", ".cr2", ".nef", ".orf",".sr2")
         imgSuffixes = (".jpg", ".png", ".gif", ".jpeg", ".raw", ".cr2", ".nef", ".orf", ".sr2")
         vidSuffixes = (".mp4", ".mov", ".wmv", ".avi", ".webm", ".avi", ".flv", ".mkv", ".mpeg4", ".gif")
         if self.path.endswith(txtableSuffixes):
