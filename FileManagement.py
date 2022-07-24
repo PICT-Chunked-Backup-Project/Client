@@ -16,6 +16,9 @@ class FileManagement:
                 else:
                     self.path.append(f)
 
+    def getPathList(self):
+        return self.path
+
     def getPDFList(self):
         PDFList = []
         for i in range(len(self.path)):
@@ -47,7 +50,7 @@ class FileManagement:
 
     def getVIDEOList(self):
         VIDEOList = []
-        suffixes = (".mp4", ".mov", ".wmv", ".avi", ".webm", ".avi", ".flv", ".mkv", ".mpeg4",".gif")
+        suffixes = (".mp4", ".mov", ".wmv", ".avi", ".webm", ".avi", ".flv", ".mkv", ".mpeg4", ".gif")
         for i in range(len(self.path)):
             if self.path[i].endswith(suffixes):
                 VIDEOList.append(self.path[i])
@@ -66,8 +69,6 @@ class FileManagement:
             if self.path[i].endswith(".xlsx"):
                 XlSXList.append(self.path[i])
         return XlSXList
-
-
 
 
 if __name__ == '__main__':
