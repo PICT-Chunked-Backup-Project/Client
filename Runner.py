@@ -28,9 +28,7 @@ class MLData:
         list = []
         list.append(self.path)
         cc = FileConverter(self.Path, self.tessaractFileLocation)
-        txtableSuffixes = (
-        ".pdf", ".docx", "xlsx", ".csv", ".pdf", ".jpg", ".png", ".gif", ".jpeg", ".raw", ".cr2", ".nef", ".orf",
-        ".sr2")
+        txtableSuffixes = (".pdf", ".docx", "xlsx", ".csv", ".pdf", ".jpg", ".png", ".gif", ".jpeg", ".raw", ".cr2", ".nef", ".orf",".sr2")
         imgSuffixes = (".jpg", ".png", ".gif", ".jpeg", ".raw", ".cr2", ".nef", ".orf", ".sr2")
         vidSuffixes = (".mp4", ".mov", ".wmv", ".avi", ".webm", ".avi", ".flv", ".mkv", ".mpeg4", ".gif")
         if self.path.endswith(txtableSuffixes):
@@ -42,11 +40,11 @@ class MLData:
             pdta = PiiData(txtstr, self.piiDataTagsFilePath)
             list.append(pdta.match_query_21())  # PII data result , can be low,medium, high or very high
 
-        elif self.path.endswith(imgSuffixes):
+        if self.path.endswith(imgSuffixes):
             imgc = ImageClassifier(self.path, self.objectClassificationConfigPath, self.frozenModelPath)
             list.append(imgc.classify())
 
-        elif self.path.endswith(vidSuffixes):
+        if self.path.endswith(vidSuffixes):
             vidc = VC(self.path, self.objectClassificationConfigPath, self.frozenModelPath)
             list.append((vidc.classify()))
         return list
