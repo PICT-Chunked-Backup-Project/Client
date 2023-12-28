@@ -1,7 +1,7 @@
 # Socket Programming-Based File Backup System
 
 ## Introduction
-Client Repository of the Backup System. This repository contains the client-side scripts crucial for processing, analyzing, `Sender.py` script, which efficiently handles the transmission of files in a chunked manner.
+Client Repository of the Backup System. This repository contains the client-side scripts crucial for processing, analyzing, and securely transferring files to the server. `Sender.py` script, which efficiently handles the transmission of files in a chunked manner.
 
 ## Repository Contents
 
